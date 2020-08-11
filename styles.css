@@ -1,3 +1,8 @@
+header {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .average-container {
   display: flex;
   justify-content: flex-end;
