@@ -1,1 +1,2 @@
-console.log('I, main, am working')
+var app = new App();
+app.start()
