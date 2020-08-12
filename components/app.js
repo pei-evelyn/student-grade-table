@@ -37,6 +37,20 @@ class App {
     this.gradeForm.onSubmit(this.createGrade)
   }
   createGrade(name, course, grade) {
+    $.ajax({
+      method:"POST",
+      data: {
+        "name": name,
+        "course": course,
+        "grade": grade
+      },
+      headers: {
+        "X-Access-Token": "YoXvyx07"
+      },
+      url: "https://sgt.lfzprototypes.com/api/grades",
+      success: this.handleCreateGradeSuccess,
+      error: this.handleCreateGradeError
+    })
     console.log(name, course, grade)
   }
   handleCreateGradeError(error) {
