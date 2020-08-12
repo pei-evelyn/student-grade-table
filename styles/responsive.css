@@ -1,11 +1,11 @@
 @media screen and (max-width: 1000px) {
-  .average-grade-col, .title-col {
+  .average-grade-col, .title-col, .form-title {
     justify-content: center;
   }
 }
 
 @media screen and (min-width: 1000px) {
-  .average-grade-col {
+  .average-grade-col, .form-btns {
     justify-content: flex-end;
   }
 }
