@@ -1,5 +1,5 @@
 @media screen and (max-width: 1000px) {
-  .header > .col-lg {
+  .average-grade-col, .title-col {
     justify-content: center;
   }
 }
