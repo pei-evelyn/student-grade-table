@@ -4,7 +4,10 @@ class PageHeader {
   }
   updateAverage(newAverage) {
     var averageBadge = document.querySelector('.average-grade')
-    averageBadge.textContent = newAverage
-    console.log(newAverage);
+    if (!newAverage) {
+      averageBadge.textContent = "N/A"
+    } else {
+      averageBadge.textContent = newAverage
+    }
   }
 }

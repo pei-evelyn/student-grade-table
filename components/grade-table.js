@@ -7,7 +7,6 @@ class GradeTable {
     console.log(grades)
     var tbody = document.querySelector(".tbody")
     var noGradesText = document.querySelector(".no-grades")
-
     tbody.innerHTML = "";
 
     if (!grades[0]) {
@@ -20,18 +19,6 @@ class GradeTable {
       var tableRow = this.renderGradeRow(grades[i], this.deleteGrade)
       tbody.appendChild(tableRow)
     }
-
-    // for (var i = 0; i < grades.length; i++) {
-    //   var tr = document.createElement("tr")
-    //   var tdName = document.createElement("td")
-    //   var tdCourse = document.createElement("td")
-    //   var tdGrade = document.createElement("td")
-    //   tdName.textContent = grades[i].name
-    //   tdCourse.textContent = grades[i].course
-    //   tdGrade.textContent = grades[i].grade
-    //   tr.append(tdName, tdCourse, tdGrade)
-    //   tbody.appendChild(tr)
-    // }
   }
   onDeleteClick(deleteGrade) {
     this.deleteGrade = deleteGrade
@@ -47,9 +34,11 @@ class GradeTable {
     tdName.textContent = data.name
     tdCourse.textContent = data.course
     tdGrade.textContent = data.grade
-    deleteBtn.textContent = "DELETE"
+    deleteBtn.textContent = "Delete"
     deleteBtn.className = "btn btn-danger btn-sm"
-    deleteBtn.addEventListener("click", deleteGrade(data.id))
+    deleteBtn.addEventListener("click", function() {
+      deleteGrade(data.id)
+    })
 
     tdDeleteBtn.appendChild(deleteBtn)
     tr.append(tdName, tdCourse, tdGrade, tdDeleteBtn)

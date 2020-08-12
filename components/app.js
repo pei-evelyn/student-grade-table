@@ -21,7 +21,7 @@ class App {
     for (var i = 0; i < grades.length; i++) {
       total += grades[i].grade
     }
-    var average = total / grades.length
+    var average = Math.round(total / grades.length * 10) / 10
     this.pageHeader.updateAverage(average)
   }
   getGrades() {
@@ -65,9 +65,18 @@ class App {
   }
   deleteGrade(id) {
     console.log(id)
+    $.ajax({
+      method: "DELETE",
+      url: "https://sgt.lfzprototypes.com/api/grades/" + id,
+      headers: {
+        "X-Access-Token": "YoXvyx07"
+      },
+      success: this.handleDeleteGradeSuccess,
+      error: this.handleDeleteGradeError
+    })
   }
   handleDeleteGradeError(error) {
-    console.error(error)
+    console.error("Delete error"+ error)
   }
   handleDeleteGradeSuccess() {
     this.getGrades()
