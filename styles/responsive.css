@@ -1,0 +1,11 @@
+@media screen and (max-width: 1000px) {
+  .header > .col-lg {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .average-grade-col {
+    justify-content: flex-end;
+  }
+}
