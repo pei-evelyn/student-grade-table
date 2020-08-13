@@ -9,6 +9,7 @@ class GradeForm {
   }
   handleSubmit(event) {
     event.preventDefault()
+    console.log(event.submitter)
     var formData = new FormData(event.target)
     var studentName = formData.get("name")
     var studentCourse = formData.get("course")
