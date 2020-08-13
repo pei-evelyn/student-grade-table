@@ -17,9 +17,9 @@ class App {
     this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
     this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
 
-    // this.editGrade = this.editGrade.bind(this);
-    // this.handleEditGradeError = this.handleEditGradeError.bind(this);
-    // this.handleEditGradeSuccess = this.handleEditGradeSuccess.bind(this);
+    this.editGrade = this.editGrade.bind(this);
+    this.handleEditGradeError = this.handleEditGradeError.bind(this);
+    this.handleEditGradeSuccess = this.handleEditGradeSuccess.bind(this);
   }
 
   // Gets the grade data from the API (AJAX GET Request, Success Method, Error Method) TWO
@@ -52,9 +52,11 @@ class App {
 
   start() {
     this.getGrades()
-    this.gradeForm.onSubmit(this.createGrade)
+    this.gradeForm.onAdd(this.createGrade)
+    this.gradeForm.onEdit(this.editGrade)
     this.gradeTable.onDeleteClick(this.deleteGrade)
     this.gradeTable.onEditClick(this.gradeForm.repopulateForm)
+
   }
 
   // Gets info from Grade form and sends to Student API (AJAX POST Request, Success Method, Error Method)
@@ -106,28 +108,26 @@ class App {
 
   // Sends edit requet to Student API (AJAX PATCH Request, Success Method, Error Method)
 
-  // editGrade(oldData) {
-  //   console.log("App", oldData)
-  // }
-  // handleEditGradeError(error) {
-  //   console.error(error)
-  // }
-  // handleEditGradeSuccess() {
-  //   this.getGrades()
-  // }
-
-  //Getting individual grade to populate form
-
-//   getIndivdualGrade(id) {
-//     console.log(id)
-//   }
-//   handleGetIndivdualGradeError(error) {
-//     console.error(error)
-//   }
-//   handleGetIndivdualGradeSuccess() {
-//     this.editGrade("name", "course", "grade")
-//   }
-//   repopulateGradeForm(oldData) {
-//     console.log("App", oldData)
-//   }
+  editGrade(studentName, studentCourse, studentGrade, id) {
+    $.ajax({
+      method: "PATCH",
+      data: {
+        "name": studentName,
+        "course": studentCourse,
+        "grade": studentGrade
+      },
+      headers: {
+        "X-Access-Token": "YoXvyx07"
+      },
+      url: "https://sgt.lfzprototypes.com/api/grades/" + id,
+      success: this.handleCreateGradeSuccess,
+      error: this.handleCreateGradeError
+    })
+  }
+  handleEditGradeError(error) {
+    console.error(error)
+  }
+  handleEditGradeSuccess() {
+    this.getGrades()
+  }
 }
