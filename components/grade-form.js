@@ -20,7 +20,8 @@ class GradeForm {
     var formData = new FormData(event.target)
     var studentName = formData.get("name")
     var studentCourse = formData.get("course")
-    var studentGrade = formData.get("grade")
+    var studentGrade = parseInt(formData.get("grade"))
+
     if (event.submitter.value === "edit") {
       this.editGrade(studentName, studentCourse, studentGrade, this.id)
       event.submitter.value = "add"

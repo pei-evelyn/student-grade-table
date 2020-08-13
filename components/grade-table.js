@@ -9,7 +9,6 @@ class GradeTable {
   // Updates the grade table on webpage
 
   updateGrades(grades) {
-    console.log(grades)
     var tbody = document.querySelector(".tbody")
     var noGradesText = document.querySelector(".no-grades")
     tbody.innerHTML = "";
