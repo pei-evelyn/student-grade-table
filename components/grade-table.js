@@ -21,7 +21,7 @@ class GradeTable {
     }
 
     for (var i = 0; i < grades.length; i++) {
-      var tableRow = this.renderGradeRow(grades[i], this.deleteGrade, this.editGrade)
+      var tableRow = this.renderGradeRow(grades[i], this.deleteGrade, this.repopulateForm)
       tbody.appendChild(tableRow)
     }
   }
@@ -32,10 +32,10 @@ class GradeTable {
   onDeleteClick(deleteGrade) {
     this.deleteGrade = deleteGrade
   }
-  onEditClick(editGrade) {
-    this.editGrade = editGrade
+  onEditClick(repopulateForm) {
+    this.repopulateForm = repopulateForm
   }
-  renderGradeRow(data, deleteGrade, editGrade) {
+  renderGradeRow(data, deleteGrade, repopulateForm) {
     var tr = document.createElement("tr")
     var tdName = document.createElement("td")
     var tdCourse = document.createElement("td")
@@ -52,8 +52,8 @@ class GradeTable {
 
     deleteIcon.className = "fas fa-trash"
     editIcon.className = "fas fa-edit"
-    deleteAnchor.className = "ml-2 text-danger"
-    editAnchor.className = "text-info"
+    deleteAnchor.className = "ml-3 text-danger"
+    editAnchor.className = "ml-1 text-info"
 
     deleteAnchor.appendChild(deleteIcon)
     editAnchor.appendChild(editIcon)
@@ -63,9 +63,7 @@ class GradeTable {
     })
 
     editAnchor.addEventListener("click", function() {
-      // console.log(event)
-      // getIndividualGrade()
-      editGrade(data.name, data.course, data.grade)
+      repopulateForm(data)
     })
 
     tdOperations.append(editAnchor, deleteAnchor)

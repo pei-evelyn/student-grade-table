@@ -17,9 +17,9 @@ class App {
     this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
     this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
 
-    this.editGrade = this.editGrade.bind(this);
-    this.handleEditGradeError = this.handleEditGradeError.bind(this);
-    this.handleEditGradeSuccess = this.handleEditGradeSuccess.bind(this);
+    // this.editGrade = this.editGrade.bind(this);
+    // this.handleEditGradeError = this.handleEditGradeError.bind(this);
+    // this.handleEditGradeSuccess = this.handleEditGradeSuccess.bind(this);
   }
 
   // Gets the grade data from the API (AJAX GET Request, Success Method, Error Method) TWO
@@ -54,7 +54,7 @@ class App {
     this.getGrades()
     this.gradeForm.onSubmit(this.createGrade)
     this.gradeTable.onDeleteClick(this.deleteGrade)
-    this.gradeTable.onEditClick(this.editGrade)
+    this.gradeTable.onEditClick(this.gradeForm.repopulateForm)
   }
 
   // Gets info from Grade form and sends to Student API (AJAX POST Request, Success Method, Error Method)
@@ -106,15 +106,15 @@ class App {
 
   // Sends edit requet to Student API (AJAX PATCH Request, Success Method, Error Method)
 
-  editGrade(editName, editCourse, editGrade) {
-    console.log(editName, editCourse, editGrade)
-  }
-  handleEditGradeError(error) {
-    console.error(error)
-  }
-  handleEditGradeSuccess() {
-    this.getGrades()
-  }
+  // editGrade(oldData) {
+  //   console.log("App", oldData)
+  // }
+  // handleEditGradeError(error) {
+  //   console.error(error)
+  // }
+  // handleEditGradeSuccess() {
+  //   this.getGrades()
+  // }
 
   //Getting individual grade to populate form
 
@@ -126,5 +126,8 @@ class App {
 //   }
 //   handleGetIndivdualGradeSuccess() {
 //     this.editGrade("name", "course", "grade")
+//   }
+//   repopulateGradeForm(oldData) {
+//     console.log("App", oldData)
 //   }
 }
