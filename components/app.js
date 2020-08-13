@@ -153,7 +153,7 @@ class App {
     var total = 0
     var arrLength = this.gradesArr.length
     for (var i = 0; i < arrLength; i++) {
-      total += parseInt(this.gradesArr[i].grade)
+      total += this.gradesArr[i].grade
     }
     var average = Math.round(total / arrLength * 10) / 10
     this.pageHeader.updateAverage(average)
